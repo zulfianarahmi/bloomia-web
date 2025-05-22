@@ -3,7 +3,11 @@ import { useState } from "react";
 import MoodTracker from "../../../components/MoodTracker";
 import { useRouter } from "next/navigation";
 
-export default function WorkoutDetail({ params }: { params: { id: string } }) {
+interface WorkoutDetailProps {
+  params: { id: string };
+}
+
+export default function WorkoutDetail({ params }: WorkoutDetailProps) {
   const [done, setDone] = useState(false);
   const router = useRouter();
 
