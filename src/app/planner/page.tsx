@@ -3,8 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { api, WorkoutPlan, Workout } from "../../services/api";
 import { useRouter } from "next/navigation";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
+// Removed heavy dependencies for faster loading
 
 const dayNames = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"];
 
@@ -66,27 +65,11 @@ export default function Planner() {
   }, [plan, workouts]);
 
   const handleDownloadPNG = async () => {
-    if (plannerRef.current) {
-      const canvas = await html2canvas(plannerRef.current, { backgroundColor: null });
-      const link = document.createElement("a");
-      link.download = "jadwal-latihan.png";
-      link.href = canvas.toDataURL();
-      link.click();
-    }
+    alert("Fitur download sementara dinonaktifkan untuk performa yang lebih baik");
   };
 
   const handleDownloadPDF = async () => {
-    if (plannerRef.current) {
-      const canvas = await html2canvas(plannerRef.current, { backgroundColor: null });
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF({
-        orientation: "portrait",
-        unit: "px",
-        format: [canvas.width, canvas.height],
-      });
-      pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
-      pdf.save("jadwal-latihan.pdf");
-    }
+    alert("Fitur download sementara dinonaktifkan untuk performa yang lebih baik");
   };
 
   const handleEditChange = (dayIdx: number, type: string, value: string | number | null) => {
@@ -121,7 +104,7 @@ export default function Planner() {
   if (loading) {
     return (
       <main className="flex min-h-screen flex-col items-center justify-center bg-white px-4">
-        <p className="text-gray-600">Memuat jadwal...</p>
+        <div className="text-pink-500 text-sm">Memuat jadwal...</div>
       </main>
     );
   }

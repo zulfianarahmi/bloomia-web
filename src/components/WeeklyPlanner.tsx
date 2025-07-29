@@ -5,13 +5,13 @@ const WeeklyPlanner: React.FC = () => {
   const router = useRouter();
   const [plan] = useState({
     workouts: [
-      { day: 1, workoutId: 1, completed: false, note: '' },
-      { day: 2, workoutId: 2, completed: false, note: '' },
+      { day: 1, workoutId: 1, completed: false, note: 'Full Body Strength' },
+      { day: 2, workoutId: 2, completed: false, note: 'Upper Body' },
       { day: 3, workoutId: -1, completed: false, note: 'Rest Day' },
-      { day: 4, workoutId: 3, completed: false, note: '' },
-      { day: 5, workoutId: 4, completed: false, note: '' },
-      { day: 6, workoutId: 5, completed: false, note: '' },
-      { day: 7, workoutId: 6, completed: false, note: '' },
+      { day: 4, workoutId: 3, completed: false, note: 'Lower Body' },
+      { day: 5, workoutId: 4, completed: false, note: 'Core Workout' },
+      { day: 6, workoutId: 5, completed: false, note: 'Bodyweight' },
+      { day: 7, workoutId: 6, completed: false, note: 'Yoga Flow' },
     ],
   });
 
@@ -19,6 +19,7 @@ const WeeklyPlanner: React.FC = () => {
     if (workoutId === -1) return;
     
     if (workoutId) {
+      // Navigate to workout page
       router.push(`/workout/${workoutId}`);
     }
   };
@@ -48,11 +49,8 @@ const WeeklyPlanner: React.FC = () => {
             ) : workout.workoutId ? (
               <div>
                 <div className="font-medium">
-                  {workouts.find((w) => w.id === workout.workoutId)?.title || "Loading..."}
+                  {workout.note}
                 </div>
-                {workout.note && (
-                  <div className="text-sm text-gray-600 mt-1">{workout.note}</div>
-                )}
               </div>
             ) : (
               <div className="text-gray-500">No workout</div>
