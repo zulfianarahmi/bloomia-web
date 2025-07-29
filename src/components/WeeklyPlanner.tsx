@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const WeeklyPlanner: React.FC = () => {
   const router = useRouter();
-  const [plan, setPlan] = useState({
+  const [plan] = useState({
     workouts: [
       { day: 1, workoutId: 1, completed: false, note: '' },
       { day: 2, workoutId: 2, completed: false, note: '' },

@@ -75,7 +75,11 @@ export const api = {
     return res.json();
   },
 
-  async createPlan(data: { userId: number; workouts: any[] }) {
+  async createPlan(data: { userId: number; workouts: Array<{
+    day: number;
+    workoutId: number | null;
+    completed: boolean;
+  }> }) {
     const res = await fetch(`${API_URL}/plans`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

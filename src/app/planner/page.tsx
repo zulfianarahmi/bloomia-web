@@ -15,7 +15,12 @@ export default function Planner() {
   const [showReminder, setShowReminder] = useState(false);
   const [todayWorkout, setTodayWorkout] = useState<string | null>(null);
   const [editMode, setEditMode] = useState(false);
-  const [editPlanner, setEditPlanner] = useState<any[]>([]);
+  const [editPlanner, setEditPlanner] = useState<Array<{
+    day: number;
+    workoutId: number | null;
+    completed: boolean;
+    note?: string;
+  }>>([]);
   const [saving, setSaving] = useState(false);
   const router = useRouter();
   const plannerRef = useRef<HTMLDivElement>(null);
