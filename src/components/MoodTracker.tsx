@@ -1,13 +1,17 @@
 "use client";
 import { useState } from "react";
 
-export default function MoodTracker({ onFinish }: { onFinish: () => void }) {
+export default function MoodTracker({ onFinish }: { onFinish?: () => void }) {
   const [energy, setEnergy] = useState(3);
   const [mood, setMood] = useState(3);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onFinish();
+    if (onFinish) {
+      onFinish();
+    } else {
+      window.location.href = "/done";
+    }
   };
 
   return (
